@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet"  href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <h1><center>LOGIN PAGE</center></h1>
+    </div>
+
+    <div class ="footer">    
+    </div>
+    
+    <div class="main">
+        <h1>Login Information</h1>
+        <h2>Enter your login credentials</h2>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <label for="username">
+                Username:
+            </label>
+            <input type="text" id="username" name="username" 
+                placeholder="Enter your Username" required>
+
+            <label for="password">
+                Password:
+            </label>
+            <input type="password" id="password" name="password" 
+                placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                <button type="Submit">
+                    Submit
+                    
+                </button>
+            </div>
+        </form>
+        
+        <p>Not registered?
+            <a href="signup" style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+</body>
+    
+
+</html>
